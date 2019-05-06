@@ -20,8 +20,12 @@ nchar(d) == 24
 
 ## something similar in the current locale
 b <- format(Sys.time(), " %d %b %Y",language=FR)
+
+JEU1 <- read.table("JEU1.csv",header=TRUE, na.strings = "NA", sep=";")
 ```
-b
+`r`
+
+![Logo](logo isara.jpg){ width=30% }
 
 ## Bonjour,
 
@@ -41,6 +45,11 @@ Nombre de poules :           | a                        |a
 -----------------------------|------------
 Type d'élevage :             |
 Type de production :         |
+
+``` {r functemp, echo = T}
+x <- 3
+plot(JEU1$PROD) abline(v=JEU1$PROD[c(x)],lwd=1,col="red")
+```
 
 Si vous avez des questions ou des remarques, n'hésitez à nous recontacter.
 
