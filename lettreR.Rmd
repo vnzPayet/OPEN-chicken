@@ -1,0 +1,50 @@
+---
+title: Bilan du mois personnalisé
+author: "Equipe optionnel D"
+date: 
+output:
+  html_document: default
+  word_document: default
+  pdf_document:
+    fig_cap: yes
+    keep_tex: yes
+header-includes:
+- \usepackage{float}
+- \floatplacement{figure}{H}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+(d <- date())
+nchar(d) == 24
+
+## something similar in the current locale
+b <- format(Sys.time(), " %d %b %Y",language=FR)
+```
+b
+
+## Bonjour,
+
+Par ce courrier, veuillez trouver votre bilan sur ............
+
+
+
+**Variables Quantitatives :**| a                        |a
+-----------------------------|--------------------------|----------------------------
+Age :                        |                          |
+Estimation de consomation :  | a                        |a
+Nombre de poules :           | a                        |a
+
+
+
+**Variables Qualitatives :** |
+-----------------------------|------------
+Type d'élevage :             |
+Type de production :         |
+
+Si vous avez des questions ou des remarques, n'hésitez à nous recontacter.
+
+Bien à vous,
+
+Equipe optionnel D
+
