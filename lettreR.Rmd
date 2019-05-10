@@ -15,17 +15,26 @@ header-includes:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-(d <- date())
-nchar(d) == 24
+# (d <- date())
+# nchar(d) == 24
 
 ## something similar in the current locale
-b <- format(Sys.time(), " %d %b %Y",language=FR)
+dateCourante <- format(Sys.time(), " %d %b %Y",language=FR)
 
-JEU1 <- read.table("JEU1.csv",header=TRUE, na.strings = "NA", sep=";")
+dataTest <- read.table("JEU_1.csv",header=TRUE, na.strings = c("NA","-","VIDE"), sep=";", dec=",", row.names = )
+
+l <- 3 
+
+#x <- 3
+#table(JEU1$PROD)
+#production <- barplot(table(JEU1$PROD))
+#abline(v=seq(from=0,to=2,by=0.1),lwd=2,col="red")
+#points(x=1.9,y=80, col="red", pch="x", cex=5)
 ```
-`r`
 
-![Logo](logo isara.jpg){ width=30% }
+`r dateCourante`
+
+![](logo isara.jpg){ width=30% }
 
 ## Bonjour,
 
@@ -44,11 +53,56 @@ Nombre de poules :           | a                        |a
 **Variables Qualitatives :** |
 -----------------------------|------------
 Type d'élevage :             |
-Type de production :         |
+Type de production :         |`r production`
 
-``` {r functemp, echo = T}
-x <- 3
-plot(JEU1$PROD) abline(v=JEU1$PROD[c(x)],lwd=1,col="red")
+``` {r a, echo = T}
+#Quali  
+par(mfrow=c(1,2))
+  
+  Monx <- 0.7
+  if (dataTest$PROD[l]=="POULETTE") Monx=1.9
+  
+  barplot(table(dataTest$PROD))
+  points(x=Monx,y=80, col="red", pch="x", cex=5)
+  
+  
+  o <- which(levels(dataTest$ALIMENT)==dataTest$ALIMENT[l])
+  table(dataTest$ALIMENT)
+  coleur <- rep("grey", nlevels(dataTest$ALIMENT))
+  coleur[l] <- "red"
+  barplot(table(dataTest$ALIMENT), col=coleur, main=paste("Agriculteur",l))
+  
+  par(mfrow=c(1,1))
+  
+  p <- which(levels(dataTest$TYPE)==dataTest$TYPE[l])
+  table(dataTest$TYPE)
+  coleur <- rep("grey", nlevels(dataTest$TYPE))
+  coleur[l] <- "red"
+  barplot(table(dataTest$TYPE), col=coleur, main=paste("Agriculteur",l))
+
+#Quanti
+par(mfrow=c(1,1))
+  
+q <- which(levels(dataTest$EstimationConso)==dataTest$EstimationConso[l])
+table(dataTest$EstimationConso)
+posi <-dataTest$NbPoules[c(l)] 
+posi2<-dataTest$EstimationConso[c(l)] 
+
+  
+  
+hist(dataTest$EstimationConso, nclass = 10, prob = FALSE, col = "cornflowerblue", border = "white", xlim = c(0, 0.0002), main = "",xlab= "Consommation", ylab = "Nombre d'éleveurs")
+text(0.000015, 55, paste("Estimation Consommation=", posi2), cex = 0.55)
+abline(v=posi2,col="red",lwd=1.5,lty=1)
+  
+  
+hist(dataTest$NbPoules, nclass = 10, prob = FALSE, col = "cornflowerblue", border = "white", xlim = c(0, 16000), main = "", xlab = "Nombre de poules", ylab = "Nombre d'éleveurs")
+  
+text(13000, 32, paste("Nb Total éleveurs =", sum(complete.cases(dataTest$NbPoules))), cex = 0.75)
+  
+  
+  
+abline(v=posi,col="red",lwd=1.5,lty=1)
+text(3000, 30, paste("Nb poules de l'éleveur =", posi), cex = 0.55)
 ```
 
 Si vous avez des questions ou des remarques, n'hésitez à nous recontacter.
