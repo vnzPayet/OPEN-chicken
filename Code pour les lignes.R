@@ -34,7 +34,7 @@ head(data_quanti)
   Monx <- 0.7
   if (dataTest$PROD[l]=="POULETTE") Monx=1.9
   
-  barplot(table(dataTest$PROD))
+  barplot(table(dataTest$PROD), main=paste("Agriculteur",l))
   points(x=Monx,y=80, col="red", pch="x", cex=5)
   
   
@@ -61,11 +61,12 @@ head(data_quanti)
   table(dataTest$EstimationConso)
   posi <-dataTest$NbPoules[c(l)] 
   posi2<-dataTest$EstimationConso[c(l)] 
+  posi3<-dataTest$NbPoules[c(l)]
 
   
   
   hist(dataTest$EstimationConso, nclass = 10, prob = FALSE, col = "cornflowerblue", border = "white", 
-       xlim = c(0, 0.0002), main = "", xlab = "Consommation", ylab = "Nombre d'éleveurs")
+       xlim = c(0, 0.0002), main =paste("Agriculteur",l), xlab = "Consommation", ylab = "Nombre d'éleveurs")
   text(0.000015, 55, paste("
                 Estimation 
                 Consommation 
@@ -74,11 +75,11 @@ head(data_quanti)
   
   
   hist(dataTest$NbPoules, nclass = 10, prob = FALSE, col = "cornflowerblue", border = "white", 
-       xlim = c(0, 16000), main = "", xlab = "Nombre de poules", ylab = "Nombre d'éleveurs")
+       xlim = c(0, 16000), main =paste("Agriculteur",l), xlab = "Nombre de poules", ylab = "Nombre d'éleveurs")
   
   text(13000, 32, paste("Nb Total 
           éleveurs =", sum(complete.cases(dataTest$NbPoules))), cex = 0.75)
-  
+ 
   
   
   abline(v=posi,col="red",lwd=1.5,lty=1)
