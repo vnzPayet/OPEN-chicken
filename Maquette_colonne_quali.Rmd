@@ -1,0 +1,44 @@
+---
+title: "Analyse univariée des variables qualitatives"
+author: "Benoit"
+date: "03/05/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+```
+![](Isara-quadri.jpg){ width=15% }
+
+**Résumé** : Ce rapport présente une analyse qualitative de la variable .
+
+```{r importdata, echo=FALSE, eval=TRUE}
+data_brute<-read.csv("envoi.csv")
+data <-data_brute[-1]
+```
+
+# **1) Effectifs et proportions par modalité**
+```{r eff_prop, echo=FALSE, eval=TRUE}
+  library(questionr)
+  table_freq<-freq(data)
+  print(names(data[1]))
+ # pandoc.table(table_freq[,-3], style="grid")
+  tab <- table_freq[,-3]
+  kable(tab)
+``` 
+
+# **2) Graphiques**
+
+```{r graph_quali, echo=FALSE, eval=TRUE}
+p<-ncol(data)
+
+for (i in 1:p) {
+    table_prop<-round(prop.table(table(data))*100,1)
+    barplot(table_prop, main="Proportions par modalités",xlab="Modalités", ylab="Effectif en %")
+    pie(table_prop,main="% par modalité")
+    
+    
+}
+
+```
