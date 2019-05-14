@@ -1,0 +1,69 @@
+---
+title: "Analyse univariée par modalité"
+author: "Benoit"
+date: "03/05/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ade4)
+library(FactoMineR)
+library(pander)
+library(knitr)
+```
+![Logo](Isara-quadri.jpg){ width=30% }
+
+**Résumé** : Vous trouvez dans ce rapport une analyse univariée de chaque colonne (modalité) de votre jeu de données. La première partie sera consacrée aux modalités qualitatives et la seconde aux modalités quantitatives.
+
+```{r importdata, echo=FALSE, eval=TRUE}
+data<-read.table("C:/Cours/4A/S8/Numérique/Maquette/JEU_1.csv", header = TRUE, sep = ";", dec=",",na.strings="NA")
+n<-nrow(data)
+p<-ncol(data)
+qt <- NULL
+ql <- NULL
+for (i in 1:p){
+  if (is.numeric(data[,i])) {
+    qt <- c(qt,i)
+  }else{
+    ql <- c(ql,i)
+  }
+}
+data_quali<-data[,ql]
+data_quanti<-data[,qt]
+```
+
+# **I) Analyse qualitative**
+## **1) Effectifs et proportions par modalité**
+```{r eff_prop, echo=FALSE, eval=TRUE}
+p<-ncol(data_quali)
+for (i in 1:p){
+  library(questionr)
+  table_freq<-freq(data_quali[,i])
+  print(names(data_quali[i]))
+  if(nrow(table_freq)<20){
+    pandoc.table(table_freq[,-3], style="grid")
+   
+  }else{print("Cette modalité comporte trop d'individus différents")
+    
+    }
+}
+``` 
+
+## **2) Graphiques**
+
+```{r graph_quali, echo=FALSE, eval=TRUE}
+test<-data_quali[,1:4]
+p<-ncol(test)
+for (i in 1:p) {
+    table_prop<-round(prop.table(table(test[i]))*100,1)
+    
+    barplot(table_prop, main="Proportions par modalités",xlab="Modalités", ylab="Effectif en %")
+    pie(table_prop,main="% par modalité")
+    
+    par(mfrow=c(p,2))
+}
+
+```
+
+# **II) Analyse quantitative**
