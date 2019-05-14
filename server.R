@@ -35,12 +35,12 @@ shinyServer(function(input, output) {
    }
   # )
   
-  output$downloadHTML <- downloadHandler(
+  output$downloadColonnes <- downloadHandler(
     filename = function() {
       #Set working directory 
-      setwd("/Users/mathilde/Documents/ISARA/3AA/R4A/APPLI10")  #("C:/Cours/4A/S8/Numérique/Maquette/OPEN-chicken")
-     # install.packages("questionr")
-      #install.packages("purr")
+      setwd("/Users/adaml/Desktop/Shiny/")  #("C:/Cours/4A/S8/Numérique/Maquette/OPEN-chicken")
+     install.packages("questionr")
+      install.packages("purr")
       library(knitr)
       library(rmarkdown)
       library(questionr)
@@ -48,7 +48,7 @@ shinyServer(function(input, output) {
       library(purrr)
       
       #import des données 
-      data_base2<-read.table("/Users/mathilde/Documents/ISARA/3AA/R4A/APPLI10/JEU_3.csv", header = TRUE, sep = ";", dec=",",na.strings="NA")  #("C:/Cours/4A/S8/Numérique/Maquette/JEU_2.csv"
+      data_base2<-read.table("/Users/adaml/Desktop/Shiny/JEU_3.csv", header = TRUE, sep = ";", dec=",",na.strings="NA")  #("C:/Cours/4A/S8/Numérique/Maquette/JEU_2.csv"
       data_base<- data_base2[c(1:10),c(1:3)]
       n<-nrow(data_base)
       p<-ncol(data_base)
@@ -81,7 +81,52 @@ shinyServer(function(input, output) {
      write.csv(selection, file, row.names = FALSE)
    }
   )
+
   
+  
+  output$downloadLignes <- downloadHandler(
+    filename = function() {
+      #Set working directory 
+      setwd("/Users/adaml/Desktop/Shiny")  #("C:/Cours/4A/S8/Numérique/Maquette/OPEN-chicken")
+      # install.packages("questionr")
+      #install.packages("purr")
+      library(knitr)
+      library(rmarkdown)
+      library(questionr)
+      library(rlang)
+      library(purrr)
+      
+      #import des données 
+      data_base3<-read.table("/Users/adaml/Desktop/Shiny/JEU_1.csv", header = TRUE, sep = ";", dec=",",na.strings="NA")  #("C:/Cours/4A/S8/Numérique/Maquette/JEU_2.csv"
+      data_base<- data_base3[c(1:10),c(1:3)]
+      n<-nrow(data_base)
+      p<-ncol(data_base)
+      
+      for (i in 1:p){
+        
+          test_id<-freq(data_base[i])
+          if (nrow(test_id) != nrow(data_base[i])){
+            envoi<-data_base[i]
+            write.csv(envoi, file = "envoi2.csv")
+            outputFile <- paste("Maquette_Lignes", names(data_base)[i], ".Rmd", sep="")
+            #render("Maquette_colonne_quali.Rmd", output_format = "html_document", output_file = outputFile, encoding = "UTF-8", output_dir = "res")
+            knit("Maquette_Lignes.Rmd", output = outputFile, encoding = "UTF-8" )
+            render(outputFile, encoding = "UTF-8")
+          }else{
+            
+          }
+        }
+      },
+      
+      
+      
+      
+      
+    
+    content = function(file) {
+      write.csv(selection, file, row.names = FALSE)
+    }
+  )  
  # output$value <- renderPrint({ input$action })
   
 })

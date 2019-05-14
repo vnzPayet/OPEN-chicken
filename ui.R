@@ -19,9 +19,9 @@ ui <- fluidPage(
     #               inline = TRUE),
       # Boutons DL----
      # downloadButton("downloadData", "Télécharger"),
-    downloadButton("downloadHTML", "Télécharger"),
+    downloadButton("downloadColonnes", "TéléchargerColonnes"),
       
-    
+    downloadButton("downloadLignes", "TéléchargerLignes"),
     # Copy the line below to make an action button
   #  actionButton("action", label = "Action"),
     
