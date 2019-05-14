@@ -30,17 +30,17 @@ shinyServer(function(input, output) {
      # ))
   #  },
     
-   content = function(file) {
-     write.csv(selection, file, row.names = FALSE)
-   }
+  # content = function(file) {
+  #   write.csv(selection, file, row.names = FALSE)
+  # }
   # )
   
   output$downloadColonnes <- downloadHandler(
     filename = function() {
       #Set working directory 
-      setwd("/Users/adaml/Desktop/Shiny/")  #("C:/Cours/4A/S8/Numérique/Maquette/OPEN-chicken")
-     install.packages("questionr")
-      install.packages("purr")
+      setwd("/Users/mathilde/Desktop/APPLI11/")  #("C:/Cours/4A/S8/Numérique/Maquette/OPEN-chicken")
+    # install.packages("questionr")
+     # install.packages("purr")
       library(knitr)
       library(rmarkdown)
       library(questionr)
@@ -48,8 +48,8 @@ shinyServer(function(input, output) {
       library(purrr)
       
       #import des données 
-      data_base2<-read.table("/Users/adaml/Desktop/Shiny/JEU_3.csv", header = TRUE, sep = ";", dec=",",na.strings="NA")  #("C:/Cours/4A/S8/Numérique/Maquette/JEU_2.csv"
-      data_base<- data_base2[c(1:10),c(1:3)]
+      data_base2<-read.table("/Users/mathilde/Desktop/APPLI11/JEU_3.csv", header = TRUE, sep = ";", dec=",",na.strings="NA")  #("C:/Cours/4A/S8/Numérique/Maquette/JEU_2.csv"
+      data_base<- data_base2[c(1:70),c(1:4)]
       n<-nrow(data_base)
       p<-ncol(data_base)
       
@@ -70,15 +70,9 @@ shinyServer(function(input, output) {
           }
         }
       }
-      
-      
-      
-      
-      
     },
     
    content = function(file) {
-     write.csv(selection, file, row.names = FALSE)
    }
   )
 
@@ -87,7 +81,7 @@ shinyServer(function(input, output) {
   output$downloadLignes <- downloadHandler(
     filename = function() {
       #Set working directory 
-      setwd("/Users/adaml/Desktop/Shiny")  #("C:/Cours/4A/S8/Numérique/Maquette/OPEN-chicken")
+      setwd("/Users/mathilde/Desktop/APPLI11/")  #("C:/Cours/4A/S8/Numérique/Maquette/OPEN-chicken")
       # install.packages("questionr")
       #install.packages("purr")
       library(knitr)
@@ -97,7 +91,7 @@ shinyServer(function(input, output) {
       library(purrr)
       
       #import des données 
-      data_base3<-read.table("/Users/adaml/Desktop/Shiny/JEU_1.csv", header = TRUE, sep = ";", dec=",",na.strings="NA")  #("C:/Cours/4A/S8/Numérique/Maquette/JEU_2.csv"
+      data_base3<-read.table("/Users/mathilde/Desktop/APPLI11/JEU_1.csv", header = TRUE, sep = ";", dec=",",na.strings="NA")  #("C:/Cours/4A/S8/Numérique/Maquette/JEU_2.csv"
       data_base<- data_base3[c(1:10),c(1:3)]
       n<-nrow(data_base)
       p<-ncol(data_base)
@@ -118,15 +112,7 @@ shinyServer(function(input, output) {
         }
       },
       
-      
-      
-      
-      
-    
     content = function(file) {
-      write.csv(selection, file, row.names = FALSE)
     }
   )  
- # output$value <- renderPrint({ input$action })
-  
 })

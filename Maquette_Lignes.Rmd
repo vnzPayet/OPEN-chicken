@@ -23,7 +23,7 @@ dateCourante <- format(Sys.time(), " %d %b %Y",language=FR)
 
 `r dateCourante`
 
-![](logo isara.jpg){ width=30% }
+
 
 ## Bonjour,
 
