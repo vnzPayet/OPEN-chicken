@@ -34,7 +34,11 @@ Par ce courrier, veuillez trouver votre bilan mensuel
 ``` {r a, echo = F}
 dataTest <- read.table("JEU_1.csv",header=TRUE, na.strings = c("NA","-","VIDE"), sep=";", dec=",", row.names = )
 
-l <- dataTest$ID[c(1)]
+
+m<- read.csv("myligne.csv")
+l <-m$ID[c(1)]
+
+head(m)
 
   par(mfrow=c(1,2))
   
