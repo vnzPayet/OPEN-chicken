@@ -1,6 +1,6 @@
 ---
 	title: "Analyse univariée des variables qualitatives"
-	author: "Benoit"
+	author: "Equipe optionnel OPEN"
 	date: "03/05/2019"
 	output: html_document
 	---
