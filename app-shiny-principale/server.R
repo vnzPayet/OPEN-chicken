@@ -20,7 +20,7 @@ shinyServer(function(input, output) {
   
   output$table <- renderTable({
     myligne<- input$ligne1
-    dataset <- read.csv("JEU_3.csv",header=TRUE, sep=";", dec=",")
+    dataset <- read.csv("JEU_1.csv",header=TRUE, sep=";", dec=",")
     
     write.csv(dataset[myligne,],file = "myligne.csv")
     dataset[myligne,]
@@ -52,7 +52,7 @@ shinyServer(function(input, output) {
   output$downloadColonnes <- downloadHandler(
     filename = function() {
       #Set working directory 
-      setwd("/Users/mathilde/Desktop/APPLI11/APPLI12/")  #("C:/Cours/4A/S8/Numérique/Maquette/OPEN-chicken")
+      setwd("JEU_1.csv")  #("C:/Cours/4A/S8/Numérique/Maquette/OPEN-chicken")
     # install.packages("questionr")
      # install.packages("purr")
       library(knitr)
@@ -69,6 +69,11 @@ shinyServer(function(input, output) {
       
       for (i in 1:p){
         if (is.numeric(data_base[i])) {
+          envoi<-data_base[i]
+          write.csv(envoi, file = "envoi.csv")
+          outputFile <- paste("Maquette_colonne-quanti_", names(data_base)[i], ".Rmd", sep="")
+          knit("Maquette_colonne-quanti.Rmd", output = outputFile, encoding = "UTF-8" )
+          render(outputFile, encoding = "UTF-8")
           
         }else{
           test_id<-freq(data_base[i])
@@ -95,7 +100,7 @@ shinyServer(function(input, output) {
   output$downloadLignes <- downloadHandler(
     filename = function() {
       #Set working directory 
-      setwd("/Users/mathilde/Desktop/APPLI11/APPLI12/")  #("C:/Cours/4A/S8/Numérique/Maquette/OPEN-chicken")
+      #setwd("/Users/mathilde/Desktop/APPLI11/APPLI12/")  #("C:/Cours/4A/S8/Numérique/Maquette/OPEN-chicken")
       # install.packages("questionr")
       #install.packages("purr")
       library(knitr)
@@ -105,7 +110,7 @@ shinyServer(function(input, output) {
       library(purrr)
       
       #import des données 
-      data_base3<-read.table("/Users/mathilde/Desktop/APPLI11/APPLI12/JEU_1.csv", header = TRUE, sep = ";", dec=",",na.strings="NA")  #("C:/Cours/4A/S8/Numérique/Maquette/JEU_2.csv"
+      data_base3<-read.table("JEU_1", header = TRUE, sep = ";", dec=",",na.strings="NA")  #("C:/Cours/4A/S8/Numérique/Maquette/JEU_2.csv"
       data_base<- data_base3[c(1:10),c(1:3)]
       n<-nrow(data_base)
       p<-ncol(data_base)
