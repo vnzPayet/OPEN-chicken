@@ -1,55 +1,49 @@
 ---
-title: "Rapport élevages avicoles du mois de "
+title: "Analyse univariée des variables quantitatives "
+author: "Equipe optionnel OPEN"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, fig.pos= "h")
 # library(FactoMineR)
+library(knitr)
 ```
 
 ```{r,echo=FALSE,eval=TRUE}
-donnees<-read.csv2("data/JEU_1.csv",header=TRUE, na.strings = c("NA","-","VIDE"), sep=";", dec=",")# changer le fichier d'entrée
-head(donnees,7) #
-n <- nrow(donnees)
-p <- ncol(donnees)
+data_brute<-read.csv("envoi.csv", )
+data<-data_brute[-1]
+
 ```
 
-
-![Logo](../Images/CoopDauph.png){ width=30% } 
 
 # Différentes données 
 
 
 ```{r functionDesc ,echo=FALSE, eval=TRUE}
 desc <- function(x){
-  # x <- donnees[,6] #pour debug
-  Moy <- mean(x,na.rm=TRUE)
+    Moy <- mean(x,na.rm=TRUE)
   Mini<- min(x,na.rm=TRUE)
   Max<- max(x,na.rm=TRUE)
   E_type<- sd(x,na.rm=TRUE)
 
-  rbind(Moy, Mini, Max, E_type)
+  rbind(Variable, Moy, Mini, Max, E_type)
   
 }
 ```
 
 ```{r testFunction, echo=FALSE, eval=TRUE}
-#desc(nb_poules)
-#desc(consommation)
 
-#str(donnees)
-
-for (i in 6:8){
-  print(names(donnees)[i])
-  print(desc(donnees[,i]))
-} 
+  #print(names(data))
+  titre <-names(data)
+  tab<-desc(data[,1])
+  kable(tab, caption = titre)
 
 ```
 
 
 ```{r, echo=FALSE}
-hist(donnees[,6], col="red")
+hist(data[,1], col="red")
 ```
 
 
