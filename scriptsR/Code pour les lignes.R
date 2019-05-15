@@ -41,7 +41,7 @@ head(data_quanti)
   o <- which(levels(dataTest$ALIMENT)==dataTest$ALIMENT[l])
   table(dataTest$ALIMENT)
   coleur <- rep("grey", nlevels(dataTest$ALIMENT))
-  coleur[l] <- "red"
+  coleur[dataTest$ALIMENT[l]] <- "red"
   barplot(table(dataTest$ALIMENT), col=coleur, main=paste("Agriculteur",l))
   
   par(mfrow=c(1,1))
@@ -49,7 +49,7 @@ head(data_quanti)
   p <- which(levels(dataTest$TYPE)==dataTest$TYPE[l])
   table(dataTest$TYPE)
   coleur <- rep("grey", nlevels(dataTest$TYPE))
-  coleur[l] <- "red"
+  coleur[dataTest$TYPE[l]] <- "red"
   barplot(table(dataTest$TYPE), col=coleur, main=paste("Agriculteur",l))
 
 
