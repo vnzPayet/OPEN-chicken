@@ -68,17 +68,21 @@ shinyServer(function(input, output) {
       p<-ncol(data_base)
       
       for (i in 1:p){
-        if (is.numeric(data_base[i])) {
+        if (is.numeric(data_base[,i])==TRUE) {
+          envoi<-data_base[i]
+          write.csv(envoi, file = "envoi.csv")
+          outputFile <- paste("Maquette_colonne-quanti_", names(data_base)[i], ".Rmd", sep="")
+          knit("Maquette_colonne-quanti.Rmd", output = outputFile, encoding = "UTF-8")
+          render(outputFile, encoding = "UTF-8", output_dir = "res")
           
         }else{
-          test_id<-freq(data_base[i])
+          test_id<-freq(data_base[,i])
           if (nrow(test_id) != nrow(data_base[i])){
             envoi<-data_base[i]
             write.csv(envoi, file = "envoi.csv")
-            outputFile <- paste("Maquette_colonne_quali_", names(data_base)[i], ".Rmd", sep="")
-            #render("Maquette_colonne_quali.Rmd", output_format = "html_document", output_file = outputFile, encoding = "UTF-8", output_dir = "res")
+            outputFile <- paste("Maquette_colonne_quali_", names(data_base)[i], ".html", sep="")
             knit("Maquette_colonne_quali.Rmd", output = outputFile, encoding = "UTF-8" )
-            render(outputFile, encoding = "UTF-8")
+            render(outputFile, encoding = "UTF-8", output_dir = "res")
           }else{
             
           }
