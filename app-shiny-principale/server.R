@@ -12,13 +12,25 @@ library(shiny)
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
  
+  #dataset <- read.csv("JEU_3.csv",header=TRUE, sep=";", dec=",")
+  #a <- names(dataset)
   
   # Rentrer le jeu de données dans un tableau
+
+  
   output$table <- renderTable({
+    myligne<- input$ligne1
     dataset <- read.csv("JEU_3.csv",header=TRUE, sep=";", dec=",")
-    selection <- dataset[c(1:20),]
+    
+    write.csv(dataset[myligne,],file = "myligne.csv")
+    dataset[myligne,]
+    
     
   })
+  
+  
+ 
+  
   
   # Télécharger le fichier
 #  output$downloadData <- downloadHandler(
@@ -35,10 +47,12 @@ shinyServer(function(input, output) {
   # }
   # )
   
+ 
+  
   output$downloadColonnes <- downloadHandler(
     filename = function() {
       #Set working directory 
-      setwd("/Users/mathilde/Desktop/APPLI11/")  #("C:/Cours/4A/S8/Numérique/Maquette/OPEN-chicken")
+      setwd("/Users/mathilde/Desktop/APPLI11/APPLI12/")  #("C:/Cours/4A/S8/Numérique/Maquette/OPEN-chicken")
     # install.packages("questionr")
      # install.packages("purr")
       library(knitr)
@@ -48,7 +62,7 @@ shinyServer(function(input, output) {
       library(purrr)
       
       #import des données 
-      data_base2<-read.table("/Users/mathilde/Desktop/APPLI11/JEU_3.csv", header = TRUE, sep = ";", dec=",",na.strings="NA")  #("C:/Cours/4A/S8/Numérique/Maquette/JEU_2.csv"
+      data_base2<-read.table("/Users/mathilde/Desktop/APPLI11/APPLI12/JEU_3.csv", header = TRUE, sep = ";", dec=",",na.strings="NA")  #("C:/Cours/4A/S8/Numérique/Maquette/JEU_2.csv"
       data_base<- data_base2[c(1:70),c(1:4)]
       n<-nrow(data_base)
       p<-ncol(data_base)
@@ -81,7 +95,7 @@ shinyServer(function(input, output) {
   output$downloadLignes <- downloadHandler(
     filename = function() {
       #Set working directory 
-      setwd("/Users/mathilde/Desktop/APPLI11/")  #("C:/Cours/4A/S8/Numérique/Maquette/OPEN-chicken")
+      setwd("/Users/mathilde/Desktop/APPLI11/APPLI12/")  #("C:/Cours/4A/S8/Numérique/Maquette/OPEN-chicken")
       # install.packages("questionr")
       #install.packages("purr")
       library(knitr)
@@ -91,7 +105,7 @@ shinyServer(function(input, output) {
       library(purrr)
       
       #import des données 
-      data_base3<-read.table("/Users/mathilde/Desktop/APPLI11/JEU_1.csv", header = TRUE, sep = ";", dec=",",na.strings="NA")  #("C:/Cours/4A/S8/Numérique/Maquette/JEU_2.csv"
+      data_base3<-read.table("/Users/mathilde/Desktop/APPLI11/APPLI12/JEU_1.csv", header = TRUE, sep = ";", dec=",",na.strings="NA")  #("C:/Cours/4A/S8/Numérique/Maquette/JEU_2.csv"
       data_base<- data_base3[c(1:10),c(1:3)]
       n<-nrow(data_base)
       p<-ncol(data_base)

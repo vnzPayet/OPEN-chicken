@@ -13,7 +13,9 @@ ui <- fluidPage(
   
   # Sidebar with a slider input for number of bins 
     sidebarPanel(
-      
+   #     selectInput("variable", "Variable:", list(a),
+   #     tableOutput("data")
+    #  ),
       # Boutons pour choisir le format puis télécharger le jeu de données----
     #  radioButtons('format', 'Format du document à éditer :', c('PDF', 'HTML', 'Word'),
     #               inline = TRUE),
@@ -22,6 +24,8 @@ ui <- fluidPage(
     downloadButton("downloadColonnes", "TéléchargerColonnes"),
       
     downloadButton("downloadLignes", "TéléchargerLignes"),
+    
+    numericInput("ligne1","ligne à traiter",0), 
     # Copy the line below to make an action button
   #  actionButton("action", label = "Action"),
     
@@ -35,6 +39,7 @@ ui <- fluidPage(
         
         # Output: Data file ----
         tableOutput("table"),width = 20)
+        #textOutput("ligne1")
        # plotOutput("test")
       
     )
