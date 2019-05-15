@@ -78,7 +78,7 @@ ui <- dashboardPage(
                     
                     selectizeInput("val", 
                                    label = NULL, 
-                                   choices = names(donnee),
+                                   choices = letters[1:5],# names(donnee),  ## Il faut acceder à donnee via les renderTable
                                    multiple = TRUE),
                     
                    
@@ -151,13 +151,13 @@ server <- function(input, output) {
 #Pour lire le tableau ----
     output$tablequali <- renderTable({
         donnee <- read.table(#input$file1$datapath,
-                             "EXEMPLE.csv", header=TRUE, na.strings = NA, sep=";")
+                             "../data/EXEMPLE.csv", header=TRUE, na.strings = NA, sep=";")
         donnee[,c(input$val)]
     })
     
-#Pour affivher les données ---- 
+#Pour afficher les données ---- 
     output$cols <- renderText({
-        donnee <- read.table("EXEMPLE.csv",header=TRUE, na.strings = NA, sep=";")
+        donnee <- read.table("../../data/EXEMPLE.csv",header=TRUE, na.strings = NA, sep=";")
         #names(donnee))
         x <- donnee[,input$variable]
                     })
@@ -186,14 +186,12 @@ server <- function(input, output) {
     
     
     
-#Dernière ligne de SERVER 
-}
 
 ####COLONNE ----
 
 output$table <- renderTable({
-    myligne<- input$ligne1
-    dataset <- read.csv("JEU_1.csv",header=TRUE, sep=";", dec=",")
+    myligne <- input$ligne1
+    dataset <- read.csv("../data/JEU_1.csv",header=TRUE, sep=";", dec=",")
     
     write.csv(dataset[myligne,],file = "myligne.csv")
     dataset[myligne,]
@@ -214,7 +212,7 @@ output$downloadColonnes <- downloadHandler(
         # library(purrr)
         
         #import des données 
-        data_base2<-read.table("JEU_1.csv", header = TRUE, sep = ";", dec=",",na.strings="NA")  #("C:/Cours/4A/S8/Numérique/Maquette/JEU_2.csv"
+        data_base2<-read.table("../data/JEU_1.csv", header = TRUE, sep = ";", dec=",",na.strings="NA")  #("C:/Cours/4A/S8/Numérique/Maquette/JEU_2.csv"
         data_base<- data_base2
         n<-nrow(data_base)
         p<-ncol(data_base)
@@ -250,7 +248,7 @@ output$downloadColonnes <- downloadHandler(
 
 output$table <- renderTable({
     myligne<- input$ligne1
-    dataset <- read.csv("JEU_1.csv",header=TRUE, sep=";", dec=",")
+    dataset <- read.csv("../data/JEU_1.csv",header=TRUE, sep=";", dec=",")
     
     write.csv(dataset[myligne,],file = "myligne.csv")
     dataset[myligne,]
@@ -271,7 +269,7 @@ output$downloadLignes <- downloadHandler(
         #library(purrr)
         
         #import des données 
-        data_base3<-read.table("JEU_1.csv", header = TRUE, sep = ";", dec=",",na.strings="NA")  #("C:/Cours/4A/S8/Numérique/Maquette/JEU_2.csv"
+        data_base3<-read.table("../data/JEU_1.csv", header = TRUE, sep = ";", dec=",",na.strings="NA")  #("C:/Cours/4A/S8/Numérique/Maquette/JEU_2.csv"
         data_base<- data_base3
         n<-nrow(data_base)
         p<-ncol(data_base)
@@ -295,7 +293,10 @@ output$downloadLignes <- downloadHandler(
     content = function(file) {
     }
 )  
+#Dernière ligne de SERVER 
+}
 
 
 # Run the application ----
 shinyApp(ui = ui, server = server)
+
