@@ -21,7 +21,8 @@ ui <- fluidPage(
     #               inline = TRUE),
       # Boutons DL----
      # downloadButton("downloadData", "Télécharger"),
-    downloadButton("downloadColonnes", "TéléchargerColonnes"),
+    #downloadButton("downloadColonnes", "TéléchargerColonnes"),
+    actionButton("colonnes", "Générer rapport colonne"),
       
     downloadButton("downloadLignes", "TéléchargerLignes"),
     
