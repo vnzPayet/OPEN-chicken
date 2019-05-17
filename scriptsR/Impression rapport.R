@@ -1,6 +1,6 @@
-#06/05/2019
-#Nathan JEAN et Juliette ARCHAMBAUX
-#Code qui ne fonctionne pas
+# 06/05/2019
+# Nathan JEAN et Juliette ARCHAMBAUX
+# Code qui ne fonctionne pas
 
 ##    UI    ##
 

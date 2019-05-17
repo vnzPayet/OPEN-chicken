@@ -1,5 +1,9 @@
-setwd("C:/Cours/4A/S8/Numérique/Maquette/OPEN-chicken")
-données<-read.table("C:/Cours/4A/S8/Numérique/Maquette/JEU_1.csv", header = TRUE, sep = ";", dec=",",na.strings="NA")
+## 17/05/2019 13:41:56
+## B Lecour 
+## Proposition pour trier les quali/quanti
+
+# setwd("C:/Cours/4A/S8/Numérique/Maquette/OPEN-chicken")
+données<-read.table("../data/JEU_1.csv", header = TRUE, sep = ";", dec=",",na.strings="NA")
 p<-nrow(données)
 n<-ncol(données)
 
