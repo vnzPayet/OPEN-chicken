@@ -1,11 +1,15 @@
+#Importer le fichier CSV
 dataTest <- read.table("JEU_1.csv",header=TRUE, na.strings = c("NA","-","VIDE"), sep=";", dec=",", row.names = )
 
 head(dataTest)
 
-## pour ligne l= ligne agriculteur à récupérer sur shiny
-l <- 3 
+## l= ligne agriculteur , à récupérer sur shiny ou même à tester ici en mettant par ex : l<- 3 pour l'agriculteur 3
 
-#Boucle 
+l <- dataTest$ID[c(1)] 
+l
+
+#Boucle permettant de trier les  variavles quanti et quali , mais facultatif ici dans le cas 
+# d'une analyse par ligne
 p<-nrow(dataTest)
 n<-ncol(dataTest)
 
@@ -25,26 +29,28 @@ data_quanti<-dataTest[,qt]
 data_quanti<-data_quanti[,-1] #pour supprimer la colonne des identifiants 
 head(data_quanti)
 
-##### Analyse par ligne ###########
+############################## Analyse par ligne ###########
 
 
 ### Analyse qualitative ###
-  par(mfrow=c(1,2))
+
+  par(mfrow=c(1,2)) # cette fonction permet de configurer le nombre de graph à afficher sur une page
+                    #Ici on afficher deux graph sur une même "horizontale"
   
-  Monx <- 0.7
+  Monx <- 0.7 #Permet le positionnement de la croix sur le graphique
   if (dataTest$PROD[l]=="POULETTE") Monx=1.9
   
-  barplot(table(dataTest$PROD), main=paste("Agriculteur",l))
+  barplot(table(dataTest$PROD), main=paste("Agriculteur",l)) #Graphique
   points(x=Monx,y=80, col="red", pch="x", cex=5)
   
   
   o <- which(levels(dataTest$ALIMENT)==dataTest$ALIMENT[l])
   table(dataTest$ALIMENT)
-  coleur <- rep("grey", nlevels(dataTest$ALIMENT))
-  coleur[dataTest$ALIMENT[l]] <- "red"
-  barplot(table(dataTest$ALIMENT), col=coleur, main=paste("Agriculteur",l))
+  coleur <- rep("grey", nlevels(dataTest$ALIMENT)) #Colorie toute les niveaux de la variable en gris sur le graph
+  coleur[dataTest$ALIMENT[l]] <- "red" #Colorie en rouge le niveau correspondant à l'agriculteur "
+  barplot(table(dataTest$ALIMENT), col=coleur, main=paste("Agriculteur",l)) #Graph
   
-  par(mfrow=c(1,1))
+  par(mfrow=c(1,1)) #Idem que précédemment sauf qu'on affiche qu'un seul graph 
   
   p <- which(levels(dataTest$TYPE)==dataTest$TYPE[l])
   table(dataTest$TYPE)
@@ -55,10 +61,12 @@ head(data_quanti)
 
 
 ### Analyse quantitative ###
+  
   par(mfrow=c(1,1))
   
   q <- which(levels(dataTest$EstimationConso)==dataTest$EstimationConso[l])
   table(dataTest$EstimationConso)
+  # définition de variable à stocker
   posi <-dataTest$NbPoules[c(l)] 
   posi2<-dataTest$EstimationConso[c(l)] 
   posi3<-dataTest$NbPoules[c(l)]
@@ -70,8 +78,8 @@ head(data_quanti)
   text(0.000015, 55, paste("
                 Estimation 
                 Consommation 
-                =", posi2), cex = 0.55)
-  abline(v=posi2,col="red",lwd=1.5,lty=1)
+                =", posi2), cex = 0.55) # La fonction text() permet d'insérer du texte
+  abline(v=posi2,col="red",lwd=1.5,lty=1) #Permet d'afficher une barre verticale pour placer l'agriculteur
   
   
   hist(dataTest$NbPoules, nclass = 10, prob = FALSE, col = "cornflowerblue", border = "white", 
