@@ -11,8 +11,8 @@ library(knitr)
 ```
 
 ```{r,echo=FALSE,eval=TRUE}
-data_brute<-read.csv("envoi.csv", )
-data<-data_brute[-1]
+data_brute<-read.csv("../tmp/envoi.csv")
+data<-data_brute[,-1]
 
 ```
 
@@ -22,6 +22,7 @@ data<-data_brute[-1]
 
 ```{r functionDesc ,echo=FALSE, eval=TRUE}
 desc <- function(x){
+#  x <- data_base3[,8]
   Moy <- mean(x,na.rm=TRUE)
   Mini<- min(x,na.rm=TRUE)
   Max<- max(x,na.rm=TRUE)
@@ -35,18 +36,19 @@ desc <- function(x){
 ```{r testFunction, echo=FALSE, eval=TRUE}
 
   #print(names(data))
-  titre <-names(data)
-  tab<-desc(data[,1])
+  titre <- names(data_brute)[2]
+  tab<-desc(data)
+  colnames(tab) <- titre
   kable(tab, caption = titre)
 
 ```
 
 
-```{r, echo=FALSE}
-hist(data[,1], col="red", main=paste("Histogramme de ", names(data)))
+```{r MaJolieFigure, echo=FALSE, eval=TRUE, message=FALSE,comment = NA}
+hist(data, col="gold", main=paste("Histogramme de ", titre))
 ```
 
-
+Voila !
 
 
 
