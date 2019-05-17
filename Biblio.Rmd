@@ -2,7 +2,12 @@
 
 ## Logiciels
 
+R Core Team (2019). R: A language and environment for statistical computing. R Foundation for Statistical Computing,Vienna, Austria. URL https://www.R-project.org/.
+
+
 ## Livres ou articles
+
+Cornillon, Pierre-André. Statistiques avec R. Presses universitaires de Rennes, 2008.
 
 ## Sites web
 
