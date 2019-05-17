@@ -1,7 +1,7 @@
 ##### Ce Code permet le traitement en ligne des variables quanti et quali #####
 ###### afin de créer un rapport sur Rmarkdown par la suite ######
-#### le code sera à copier puis coller dans un fichier rmarkdown ####
-
+#### le code sera à copier puis coller dans un fichier rmarkdown voir : "Maquette_lignes.Rmd" ####
+#AUTEURS : Jean-Rémy & Adam P48
 
 #Importer le fichier CSV
 dataTest <- read.table("JEU_1.csv",header=TRUE, na.strings = c("NA","-","VIDE"), sep=";", dec=",", row.names = )
@@ -10,8 +10,11 @@ head(dataTest)
 
 ## l= ligne agriculteur , à récupérer sur shiny ou même à tester ici en mettant par ex : l<- 3 pour l'agriculteur 3
 
-l <- dataTest$ID[c(1)] 
-l
+l <- dataTest$ID[c(1)] # /!\ Attention car dans rmarkdown on stock dans l une variable intermédiaire
+                        #  provenant d'un fichier myligne.csv intermédiaire aussi générer par shiny
+                          # Voir fichier "Maquette_lignes.Rmd" 
+
+
 
 #Boucle permettant de trier les  variavles quanti et quali , mais facultatif ici dans le cas 
 # d'une analyse par ligne
