@@ -5,40 +5,45 @@
 ./Action1:
 app.R   # application test pour un "action button"
 
-./app-shiny-principale:
+./app-shiny-fonctionnelle:  #sans mise en forme mais fonctionnelle 
 server.R
 ui.R
 
-./app-shiny-principale/APP:
+
+./app-shiny-principale:  #avec mise en forme à faire fonctionner 
+server.R
+ui.R
+
+./app-shiny-principale/APP:    #brouillon a supprimer 
 app.R
 
-./data:
-EXEMPLE.csv
+./data:				# jeu de données utilisé dans le code 
+EXEMPLE.csv. #petit jeu de données pour test intermédiaire 
 JEU_1.csv
 JEU_1.xlsx
 
-./Images:
+./Images 		#logo
 CoopDauph.png
 logo isara.jpg
 
-./old:
+./old:			# à supprimer correspond à maquette_lignes.Rmd
 lettre.md
 
-./scriptsR:
-analyse_quali.R
-Maquette_colonne_quali_boucle.R
-app Selection.R
-Maquette_colonne_quali.R
-Code pour les lignes.R
-Maquette_colonne_quanti.R
-Impression rapport.R
-trie_quali-quanti.R
+./scriptsR:				
+analyse_quali.R		#brouillon du script pour lancer les rmd de l'analyse par colonne (intégré dans server du shiny final)
+Maquette_colonne_quali_boucle.R.    #brouillon pour faire l'analyse par colonne des variables quali (intégré dans server du shiny final)
+app Selection.R #brouillon pour le select Input (à supprimer, est présent dans le server du shiny final) 
+Maquette_colonne_quali.R    #script R avec toutes les analyses et graph d'une variable quali  
+Code pour les lignes.R	    #brouillon pour analyse par ligne
+Maquette_colonne_quanti.R	#brouillon pour analyse quanti par colonne
+Impression rapport.R		
+trie_quali-quanti.R		#script pour séparer un tableau contenant des variable quali et quanti en 1 tableau quali et 1 quanti 
 
-./scriptsRapports_Rmd:
-Maquette_colonne_quali.Rmd
+./scriptsRapports_Rmd:		# fichier RMD  utilisé dans le code 
+Maquette_colonne_quali.Rmd	
 Maquette_Lignes.Rmd
 Maquette_colonne-quanti.Rmd
 Maquette_ttesLignes.Rmd
 
-./tmp:
+./tmp:  	#dossier où sont stockés tous les fichiers temporaires générés dans le code 
 envoi.csv
