@@ -1,5 +1,7 @@
+## Analyse de données quanti avant la fonction desc
+## Samuel NAQUIN
 
-#import des donnÃ©es 
+#import des données 
 données<-read.csv2("data/JEU_1.csv",header=TRUE, na.strings = c("NA","-","VIDE"), sep=";", dec=",")# changer le fichier d'entrée
 head(données,8,9,10) #
 nrow(données)

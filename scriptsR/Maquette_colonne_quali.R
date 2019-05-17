@@ -1,8 +1,9 @@
-#Set working directory 
-setwd("C:/Cours/4A/S8/Numérique/Maquette/OPEN-chicken")
+## Mai 2019
+##
+##
 
-#Benoit
-#Script R qui rassemble tous les traitements possibles pour analyse qualitative en colonne
+# Benoit LECOUR
+# Script R qui rassemble tous les traitements possibles pour analyse qualitative en colonne
 
 
 #import des données 

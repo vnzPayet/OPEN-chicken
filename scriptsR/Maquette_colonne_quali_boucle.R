@@ -1,5 +1,5 @@
-#Set working directory 
-setwd("C:/Cours/4A/S8/Numérique/Maquette/OPEN-chicken")
+## Test de boucle quali
+## B Lecour
 
 #import des données 
 data<-read.table("C:/Cours/4A/S8/Numérique/Maquette/JEU_1.csv", header = TRUE, sep = ";", dec=",",na.strings="NA")
