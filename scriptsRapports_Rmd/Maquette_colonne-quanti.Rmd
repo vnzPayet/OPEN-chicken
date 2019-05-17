@@ -22,12 +22,12 @@ data<-data_brute[-1]
 
 ```{r functionDesc ,echo=FALSE, eval=TRUE}
 desc <- function(x){
-    Moy <- mean(x,na.rm=TRUE)
+  Moy <- mean(x,na.rm=TRUE)
   Mini<- min(x,na.rm=TRUE)
   Max<- max(x,na.rm=TRUE)
   E_type<- sd(x,na.rm=TRUE)
 
-  rbind(Variable, Moy, Mini, Max, E_type)
+  rbind(Moy, Mini, Max, E_type)
   
 }
 ```
@@ -43,7 +43,7 @@ desc <- function(x){
 
 
 ```{r, echo=FALSE}
-hist(data[,1], col="red")
+hist(data[,1], col="red", main=paste("Histogramme de ", names(data)))
 ```
 
 
