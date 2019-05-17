@@ -1,3 +1,9 @@
-## 17/05/2019 13:56:26
+﻿## 17/05/2019 13:56:26
 ## VP 
 ## Liste des actions à faire
+#- supprimer les fichiers rmd générés
+#- créer un boût de code qui permet de nettoyer les fichiers générés
+#- traiter les dates
+#- comprendre pourquoi ne fonctionne pas sur Shinydashboard
+#- générer les rapports en PDF et Word
+#- finir la partie Import Tableau... 
