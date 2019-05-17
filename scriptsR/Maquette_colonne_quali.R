@@ -1,6 +1,10 @@
 #Set working directory 
 setwd("C:/Cours/4A/S8/Numérique/Maquette/OPEN-chicken")
 
+#Benoit
+#Script R qui rassemble tous les traitements possibles pour analyse qualitative en colonne
+
+
 #import des données 
 données<-read.csv2("C:/Cours/4A/S8/Numérique/Maquette/JEU_1.csv")
 head(données,3,5)
