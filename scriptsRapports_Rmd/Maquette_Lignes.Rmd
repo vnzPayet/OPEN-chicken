@@ -1,6 +1,6 @@
 ---
 title: Bilan du mois personnalisé
-author: "Equipe optionnel D"
+author: "Jean-Rémy et Adam"
 date: 
 output:
   html_document: default
@@ -16,7 +16,7 @@ header-includes:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 
-dateCourante <- format(Sys.time(), " %d %b %Y",language=FR)
+dateCourante <- format(Sys.time(), " %d %b %Y",language=FR) #Affichage de la date du jour + choix du format d'affichage
 
  
 ```
@@ -34,9 +34,15 @@ Par ce courrier, veuillez trouver votre bilan mensuel
 ``` {r a, echo = F}
 dataTest <- read.table("JEU_1.csv",header=TRUE, na.strings = c("NA","-","VIDE"), sep=";", dec=",", row.names = )
 
-l <- 3
 
-par(mfrow=c(1,1))
+m<- read.csv("myligne.csv") # myligne.csv est un fichier intérmediaire génerer par shiny selon la sélection de l'utilisateur (voir fichier server.R et ui.R)
+
+l <-m$ID[c(1)]
+
+head(m)
+
+#Voir commentaire fichier "Codes pour les lignes.R" pour comprendre le fonction des différents graphiques générer
+  par(mfrow=c(1,2))
   
   Monx <- 0.7
   if (dataTest$PROD[l]=="POULETTE") Monx=1.9
@@ -48,15 +54,16 @@ par(mfrow=c(1,1))
   o <- which(levels(dataTest$ALIMENT)==dataTest$ALIMENT[l])
   table(dataTest$ALIMENT)
   coleur <- rep("grey", nlevels(dataTest$ALIMENT))
-  coleur[l] <- "red"
-  barplot(table(dataTest$ALIMENT), col=coleur, main=paste("Agriculteur",l))
+  coleur[dataTest$ALIMENT[l]] <- "red"
+  barplot(table(dataTest$ALIMENT), col=coleur, cex.lab=0.5)
   
+  par(mfrow=c(1,1))
   
   p <- which(levels(dataTest$TYPE)==dataTest$TYPE[l])
   table(dataTest$TYPE)
   coleur <- rep("grey", nlevels(dataTest$TYPE))
-  coleur[l] <- "red"
-  barplot(table(dataTest$TYPE), col=coleur, main=paste("Agriculteur",l))
+  coleur[dataTest$TYPE[l]] <- "red"
+  barplot(table(dataTest$TYPE), col=coleur, cex.lab=0.5)
 
 
 
@@ -65,7 +72,9 @@ par(mfrow=c(1,1))
 
 
 **Voici les résultats des variables quantitatives:**
-``` {r tempreg, echo = F}
+``` {r b, echo = F}
+
+#Voir commentaire fichier "Codes pour les lignes.R" pour comprendre le fonction des différents graphiques générer
 
 par(mfrow=c(1,1))
   
@@ -101,5 +110,38 @@ Si vous avez des questions ou des remarques, n'hésitez à nous recontacter.
 
 Bien à vous,
 
-Equipe optionnel D
+Jean-Rémy & Adam
+
+*Liens*Adam
+<https://geoviz.sciencesconf.org/data/pages/GeoViz2018_R_shiny.pdf>
+
+<https://www.developpez.net/forums/d1570934/autres-langages/autres-langages/r/shiny-recuperation-levels-d-variable-factor-s-resservir-checkboxinput/>
+
+<http://www.sthda.com/french/wiki/parametres-graphiques>
+
+<https://www.rstudio.com/wp-content/uploads/2015/08/shiny-french-cheatsheet.pdf>
+
+<https://community.rstudio.com/t/generating-markdown-reports-from-shiny/8676?fbclid=IwAR3Rl836MRMzeebF_elClt7cUQeDDjwiuimpKFiLrwXsfYCiZWfgQwUzI8o>
+
+*Liens*Jean-Rémy
+
+<https://sites.google.com/site/rgraphiques/realiser-des-graphiques-avec-le-logiciel-r/histogrammes-et-boites-a-moustaches/diagrammes-en-camembert/diagramme-en-camembert-avec-legende-valeurs-et-etiquettes-superposees> 
+
+<https://sites.google.com/site/rgraphiques/realiser-des-graphiques-avec-le-logiciel-r/histogrammes-et-boites-a-moustaches/histogrammes/histogrammes-avec-le-logiciel-r-exemple>
+
+<https://data-wrangling-french.pdf>
+
+<https://cran.r-project.org/doc/contrib/Genolini-LireCompterTesterR.pdf>
+
+<https://www.fun-mooc.fr/c4x/UPSUD/42001S02/asset/labs.html>
+
+<https://openclassrooms.com/fr/courses/1393696-effectuez-vos-etudes-statistiques-avec-r/1394726-les-tableaux-de-donnees-dataframes>
+
+<https://coredump.guru/questions/36497500/calling-additional-functions-in-shiny>
+
+<https://chesneau.users.lmno.cnrs.fr/RCarte_Commandes-R.pdf>
+
+<https://www.developpez.net/forums/d789477/autres-langages/autres-langages/r/selection-lignes-tableau/>
+
+
 
