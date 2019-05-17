@@ -110,5 +110,38 @@ Si vous avez des questions ou des remarques, n'hésitez à nous recontacter.
 
 Bien à vous,
 
-Equipe optionnel D
+Jean-Rémy & Adam
+
+*Liens*Adam
+<https://geoviz.sciencesconf.org/data/pages/GeoViz2018_R_shiny.pdf>
+
+<https://www.developpez.net/forums/d1570934/autres-langages/autres-langages/r/shiny-recuperation-levels-d-variable-factor-s-resservir-checkboxinput/>
+
+<http://www.sthda.com/french/wiki/parametres-graphiques>
+
+<https://www.rstudio.com/wp-content/uploads/2015/08/shiny-french-cheatsheet.pdf>
+
+<https://community.rstudio.com/t/generating-markdown-reports-from-shiny/8676?fbclid=IwAR3Rl836MRMzeebF_elClt7cUQeDDjwiuimpKFiLrwXsfYCiZWfgQwUzI8o>
+
+*Liens*Jean-Rémy
+
+<https://sites.google.com/site/rgraphiques/realiser-des-graphiques-avec-le-logiciel-r/histogrammes-et-boites-a-moustaches/diagrammes-en-camembert/diagramme-en-camembert-avec-legende-valeurs-et-etiquettes-superposees> 
+
+<https://sites.google.com/site/rgraphiques/realiser-des-graphiques-avec-le-logiciel-r/histogrammes-et-boites-a-moustaches/histogrammes/histogrammes-avec-le-logiciel-r-exemple>
+
+<https://data-wrangling-french.pdf>
+
+<https://cran.r-project.org/doc/contrib/Genolini-LireCompterTesterR.pdf>
+
+<https://www.fun-mooc.fr/c4x/UPSUD/42001S02/asset/labs.html>
+
+<https://openclassrooms.com/fr/courses/1393696-effectuez-vos-etudes-statistiques-avec-r/1394726-les-tableaux-de-donnees-dataframes>
+
+<https://coredump.guru/questions/36497500/calling-additional-functions-in-shiny>
+
+<https://chesneau.users.lmno.cnrs.fr/RCarte_Commandes-R.pdf>
+
+<https://www.developpez.net/forums/d789477/autres-langages/autres-langages/r/selection-lignes-tableau/>
+
+
 
