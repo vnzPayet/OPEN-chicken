@@ -1,0 +1,44 @@
+## 17/05/2019 13:54:12
+## VP 
+## Liste des fichiers
+
+./Action1:
+app.R   # application test pour un "action button"
+
+./app-shiny-principale:
+server.R
+ui.R
+
+./app-shiny-principale/APP:
+app.R
+
+./data:
+EXEMPLE.csv
+JEU_1.csv
+JEU_1.xlsx
+
+./Images:
+CoopDauph.png
+logo isara.jpg
+
+./old:
+lettre.md
+
+./scriptsR:
+analyse_quali.R
+Maquette_colonne_quali_boucle.R
+app Selection.R
+Maquette_colonne_quali.R
+Code pour les lignes.R
+Maquette_colonne_quanti.R
+Impression rapport.R
+trie_quali-quanti.R
+
+./scriptsRapports_Rmd:
+Maquette_colonne_quali.Rmd
+Maquette_Lignes.Rmd
+Maquette_colonne-quanti.Rmd
+Maquette_ttesLignes.Rmd
+
+./tmp:
+envoi.csv
