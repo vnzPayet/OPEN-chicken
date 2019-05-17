@@ -1,3 +1,8 @@
+##### Ce Code permet le traitement en ligne des variables quanti et quali #####
+###### afin de créer un rapport sur Rmarkdown par la suite ######
+#### le code sera à copier puis coller dans un fichier rmarkdown ####
+
+
 #Importer le fichier CSV
 dataTest <- read.table("JEU_1.csv",header=TRUE, na.strings = c("NA","-","VIDE"), sep=";", dec=",", row.names = )
 
