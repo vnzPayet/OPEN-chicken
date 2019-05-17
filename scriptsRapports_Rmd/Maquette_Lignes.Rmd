@@ -32,10 +32,10 @@ Par ce courrier, veuillez trouver votre bilan mensuel
 **Voici les résultats des variables qualitatives:**
 
 ``` {r a, echo = F}
-dataTest <- read.table("JEU_1.csv",header=TRUE, na.strings = c("NA","-","VIDE"), sep=";", dec=",", row.names = )
+dataTest <- read.table("../data/JEU_1.csv",header=TRUE, na.strings = c("NA","-","VIDE"), sep=";", dec=",", row.names = )
 
 
-m<- read.csv("myligne.csv") # myligne.csv est un fichier intérmediaire génerer par shiny selon la sélection de l'utilisateur (voir fichier server.R et ui.R)
+m<- read.csv("../tmp/myligne.csv") # myligne.csv est un fichier intérmediaire génerer par shiny selon la sélection de l'utilisateur (voir fichier server.R et ui.R)
 
 l <-m$ID[c(1)]
 
