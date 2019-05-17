@@ -24,7 +24,10 @@ ui <- fluidPage(
     #downloadButton("downloadColonnes", "TéléchargerColonnes"),
     actionButton("colonnes", "Générer rapport colonne"),
       
-    downloadButton("downloadLignes", "TéléchargerLignes"),
+    #downloadButton("downloadLignes", "TéléchargerLignes")
+    actionButton("ligne_select", "Générer rapport 1 ligne"),
+    
+    actionButton("ligne", "Générer rapport toutes les lignes"),
     
     numericInput("ligne1","ligne à traiter",0), 
     # Copy the line below to make an action button
