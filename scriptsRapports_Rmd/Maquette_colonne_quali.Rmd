@@ -9,11 +9,13 @@
 knitr::opts_chunk$set(echo = TRUE)
 library(knitr)
 ```
-**Résumé** : Ce rapport présente une analyse qualitative de la variable .
 ```{r importdata, echo=FALSE, eval=TRUE}
 data_brute<-read.csv("envoi.csv")
 data <-data_brute[-1]
 ```
+
+**Résumé** : Ce rapport présente une analyse qualitative de la variable `r names(data[1])`.
+
 # **1) Effectifs et proportions par modalité**
 ```{r eff_prop, echo=FALSE, eval=TRUE}
 library(questionr)
@@ -29,8 +31,8 @@ p<-ncol(data)
 	
 for (i in 1:p) {
 table_prop<-round(prop.table(table(data))*100,1)
-barplot(table_prop, main="Proportions par modalités",xlab="Modalités", ylab="Effectif en %")
-pie(table_prop,main="% par modalité")
+barplot(table_prop, main=paste("Proportions par modalités de la variable ",names(data)),xlab="Modalités", ylab="Effectif en %")
+pie(table_prop,main=paste("% par modalité de la variable", names(data)))
 	    
 	    
 }
