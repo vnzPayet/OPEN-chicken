@@ -1,6 +1,6 @@
 ---
 title: Bilan du mois personnalisé
-author: "Equipe optionnel D"
+author: "Jean-Rémy et Adam"
 date: 
 output:
   html_document: default
@@ -16,7 +16,7 @@ header-includes:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 
-dateCourante <- format(Sys.time(), " %d %b %Y",language=FR)
+dateCourante <- format(Sys.time(), " %d %b %Y",language=FR) #Affichage de la date du jour + choix du format d'affichage
 
  
 ```
@@ -34,9 +34,15 @@ Par ce courrier, veuillez trouver votre bilan mensuel
 ``` {r a, echo = F}
 dataTest <- read.table("JEU_1.csv",header=TRUE, na.strings = c("NA","-","VIDE"), sep=";", dec=",", row.names = )
 
-l <- 3
 
-par(mfrow=c(1,1))
+m<- read.csv("myligne.csv") # myligne.csv est un fichier intérmediaire génerer par shiny selon la sélection de l'utilisateur (voir fichier server.R et ui.R)
+
+l <-m$ID[c(1)]
+
+head(m)
+
+#Voir commentaire fichier "Codes pour les lignes.R" pour comprendre le fonction des différents graphiques générer
+  par(mfrow=c(1,2))
   
   Monx <- 0.7
   if (dataTest$PROD[l]=="POULETTE") Monx=1.9
@@ -48,15 +54,16 @@ par(mfrow=c(1,1))
   o <- which(levels(dataTest$ALIMENT)==dataTest$ALIMENT[l])
   table(dataTest$ALIMENT)
   coleur <- rep("grey", nlevels(dataTest$ALIMENT))
-  coleur[l] <- "red"
-  barplot(table(dataTest$ALIMENT), col=coleur, main=paste("Agriculteur",l))
+  coleur[dataTest$ALIMENT[l]] <- "red"
+  barplot(table(dataTest$ALIMENT), col=coleur, cex.lab=0.5)
   
+  par(mfrow=c(1,1))
   
   p <- which(levels(dataTest$TYPE)==dataTest$TYPE[l])
   table(dataTest$TYPE)
   coleur <- rep("grey", nlevels(dataTest$TYPE))
-  coleur[l] <- "red"
-  barplot(table(dataTest$TYPE), col=coleur, main=paste("Agriculteur",l))
+  coleur[dataTest$TYPE[l]] <- "red"
+  barplot(table(dataTest$TYPE), col=coleur, cex.lab=0.5)
 
 
 
@@ -65,7 +72,9 @@ par(mfrow=c(1,1))
 
 
 **Voici les résultats des variables quantitatives:**
-``` {r tempreg, echo = F}
+``` {r b, echo = F}
+
+#Voir commentaire fichier "Codes pour les lignes.R" pour comprendre le fonction des différents graphiques générer
 
 par(mfrow=c(1,1))
   
