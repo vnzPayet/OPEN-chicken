@@ -41,3 +41,11 @@ Cornillon, Pierre-André. Statistiques avec R. Presses universitaires de Rennes,
 <https://chesneau.users.lmno.cnrs.fr/RCarte_Commandes-R.pdf>
 
 <https://www.developpez.net/forums/d789477/autres-langages/autres-langages/r/selection-lignes-tableau/>
+
+
+*Liens* Benoit
+<https://odr.inra.fr/intranet/carto/cartowiki/index.php/Statistiques_descriptives_avec_R#Statistiques_2>
+<http://larmarange.github.io/analyse-R/statistique-univariee.html#variable-qualitative>
+<http://lmrs.math.cnrs.fr/Persopage/Giraudo/BiostatL2_StatR_P2016.pdf>
+<http://www.sthda.com/french/wiki/titre-des-graphiques-avec-le-logiciel-r-comment-personnaliser>
+
